@@ -1,4 +1,4 @@
 bin/
 lib/
 __pycache__/
-.Python/
+.Python
