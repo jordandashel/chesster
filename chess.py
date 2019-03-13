@@ -1,5 +1,9 @@
-from chessboard import Chessboard
+from gamemaster import GameMaster
 
-chessboard = Chessboard()
-chessboard.set_board()
-print(chessboard)
+gm = GameMaster()
+gm.set_board()
+gm.print_board()
+
+movement = input()
+print(movement)
+# gm.move(movement)
