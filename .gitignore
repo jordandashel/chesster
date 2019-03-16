@@ -3,3 +3,4 @@ lib/
 __pycache__/
 .Python
 include/
+*.pyc
