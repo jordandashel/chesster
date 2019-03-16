@@ -16,18 +16,18 @@ class GameMasterTestCase(unittest.TestCase):
     def test_gm_can_report_piece_at_square(self):
         gm = GameMaster()
         gm.set_board()
-        piece = gm.what_piece('d2')
+        piece = gm.piece_at_square('d2')
         self.assertEqual(piece.name, Piece.PAWN)
 
 
-    def test_move_piece(self):
+    def test_move_pawn_one_sq(self):
         gm = GameMaster()
         gm.set_board()
-        pawn = gm.what_piece("D2")
+        pawn = gm.piece_at_square("D2")
         self.assertEqual(pawn.name, Piece.PAWN)
         self.assertEqual(pawn.color, Piece.WHITE)
-        gm.move_piece("P-D4", Piece.WHITE)
-        pawn = gm.what_piece("D4")
+        gm.move_piece("Pd3", Piece.WHITE)
+        pawn = gm.piece_at_square("D3")
         self.assertEqual(pawn.name, Piece.PAWN)
         self.assertEqual(pawn.color, Piece.WHITE)
 

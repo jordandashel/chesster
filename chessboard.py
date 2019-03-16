@@ -68,8 +68,8 @@ class Chessboard:
 
         return board
 
-    def square(self, rank, file_):
-        return self.board[rank][file_]
+    def square(self, file_, rank):
+        return self.board[file_][int(rank)]
 
     def all_pieces(self, name, color):
         all_pieces = []
