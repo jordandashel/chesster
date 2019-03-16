@@ -108,3 +108,10 @@ class Chessboard:
             black_piece.color = Piece.BLACK
             black_piece.name = board_file[1]
             self.square(file_, 8).piece = black_piece
+
+        for board_file in BOARD_FILES:
+            file_ = board_file[0]
+            self.square(file_, 3).piece = None
+            self.square(file_, 4).piece = None
+            self.square(file_, 5).piece = None
+            self.square(file_, 6).piece = None
