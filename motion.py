@@ -173,7 +173,7 @@ class PawnMotion(Motion):
         if capture:
             return y_1 + 1 == y_2 and (x_1 + 1 == x_2 or x_1 - 1 == x_2)
         if first_move:
-            return y_1 + 1 == y_2 or y_1 +2 == y_2 and x_1 == x_2
+            return (y_1 + 1 == y_2 or y_1 + 2 == y_2) and x_1 == x_2
         elif en_passant:
             # TO BE IMPLEMENTED
             # not sure if it even belongs here yet but ???
