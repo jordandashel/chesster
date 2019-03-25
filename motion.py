@@ -12,6 +12,8 @@
 #
 ######################################################################
 
+from piece import Piece
+
 import re
 import math
 
@@ -167,9 +169,12 @@ class KingMotion(Motion):
         return []
 
 class PawnMotion(Motion):
-    def valid_move(start, destination, first_move=False, capture=False, en_passant=False):
+    def valid_move(start, destination, color, first_move=False, capture=False, en_passant=False):
         x_1, y_1 = Motion.convert_to_cart_coords(start)
         x_2, y_2 = Motion.convert_to_cart_coords(destination)
+        if color == Piece.BLACK:
+            y_1 = y_1 * -1
+            y_2 = y_2 * -1
         if capture:
             return y_1 + 1 == y_2 and (x_1 + 1 == x_2 or x_1 - 1 == x_2)
         if first_move:

@@ -1,5 +1,6 @@
 import unittest
-from motion import *
+from piece import Piece
+from piece import Motion, PawnMotion, RookMotion, BishopMotion, KnightMotion, KingMotion, QueenMotion
 
 class MotionTestCase(unittest.TestCase):
     def test_indexed_file(self):
@@ -158,28 +159,32 @@ class KnightMotionTestCase(unittest.TestCase):
 
 class PawnMotionTestCase(unittest.TestCase):
     def test_valid_first_move(self):
-        can_move_to_square = PawnMotion.valid_move('a2', 'a3', first_move=True)
+        can_move_to_square = PawnMotion.valid_move('a2', 'a3', Piece.WHITE, first_move=True)
         self.assertTrue(can_move_to_square)
-        can_move_to_square = PawnMotion.valid_move('e2', 'e4', first_move=True)
+        can_move_to_square = PawnMotion.valid_move('e2', 'e4', Piece.WHITE, first_move=True)
         self.assertTrue(can_move_to_square)
-        can_move_to_square = PawnMotion.valid_move('a2', 'a5', first_move=True)
+        can_move_to_square = PawnMotion.valid_move('a2', 'a5', Piece.WHITE, first_move=True)
         self.assertFalse(can_move_to_square)
 
     def test_capture(self):
-        can_move_to_square = PawnMotion.valid_move('a3', 'b4', capture=True)
+        can_move_to_square = PawnMotion.valid_move('a3', 'b4', Piece.WHITE, capture=True)
         self.assertTrue(can_move_to_square)
-        can_move_to_square = PawnMotion.valid_move('a3', 'c4', capture=True)
+        can_move_to_square = PawnMotion.valid_move('a3', 'c4', Piece.WHITE, capture=True)
         self.assertFalse(can_move_to_square)
 
     def test_valid_move(self):
-        can_move_to_square = PawnMotion.valid_move('c3', 'c4')
+        can_move_to_square = PawnMotion.valid_move('c3', 'c4', Piece.WHITE)
         self.assertTrue(can_move_to_square)
-        can_move_to_square = PawnMotion.valid_move('c3', 'c5')
+        can_move_to_square = PawnMotion.valid_move('c3', 'c5', Piece.WHITE)
         self.assertFalse(can_move_to_square)
 
     def test_valid_capture(self):
-        can_move_to_square = PawnMotion.valid_move('c3', 'd4', capture=True)
+        can_move_to_square = PawnMotion.valid_move('c3', 'd4', Piece.WHITE, capture=True)
         self.assertTrue(can_move_to_square)
-        can_move_to_square = PawnMotion.valid_move('c3', 'c4', capture=True)
+        can_move_to_square = PawnMotion.valid_move('c3', 'c4', Piece.WHITE, capture=True)
         self.assertFalse(can_move_to_square)
+
+    def test_black_side_moves(self):
+        can_move_to_square = PawnMotion.valid_move('a7', 'a6', Piece.BLACK)
+        self.assertTrue(can_move_to_square)
 

@@ -18,6 +18,7 @@ BOARD_RANKS = [i for i in range(1, 9)]
 
 class Chessboard:
 
+    turn = Piece.WHITE
     board = {}
 
     def __init__(self):
@@ -45,7 +46,10 @@ class Chessboard:
         board += HORIZ_BORDER
 
         # to display white at the bottom
-        ranks = BOARD_RANKS.__reversed__()
+        if self.turn == Piece.WHITE:
+            ranks = BOARD_RANKS.__reversed__()
+        else:
+            ranks = BOARD_RANKS
 
         for rank in ranks:
             board += str(rank) + ' '
@@ -62,7 +66,7 @@ class Chessboard:
             board += '\n'
             board += HORIZ_BORDER
 
-        board += EMPTY_SQUARE
+        board += '  '
         for f in BOARD_FILES:
             board += '  ' + f[0] + ' '
 

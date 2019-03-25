@@ -5,7 +5,9 @@ from piece import Piece
 
 gm = GameMaster()
 os.system('cls' if os.name == 'nt' else 'clear')
+turn = Piece.WHITE
 gm.set_board()
+gm.set_turn(turn)
 gm.print_board()
 
 movement = input()
@@ -15,7 +17,8 @@ while movement != 'quit':
         os.system('cls' if os.name == 'nt' else 'clear')
         gm.print_board()
         movement = input()
-    gm.move_piece(movement, Piece.WHITE)
+    gm.move_piece(movement, turn)
     os.system('cls' if os.name == 'nt' else 'clear')
+    turn = gm.switch_turn()
     gm.print_board()
     movement = input()

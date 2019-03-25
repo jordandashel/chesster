@@ -45,11 +45,11 @@ class GameMaster:
         for ppiece in potential_pieces:
             old_file, old_rank = ppiece[0]
             piece = ppiece[1]
+
             if piece.name == Piece.PAWN:
                 # pawns are special.
-                # import pdb; pdb.set_trace()
                 first_move = int(old_rank) == 2
-                if piece.motion().valid_move((old_file, old_rank), dest_sq, first_move=first_move):
+                if piece.motion().valid_move((old_file, old_rank), dest_sq, color, first_move=first_move):
                     self.reposition_piece(piece, ppiece[0], dest_sq)
 
             elif piece.motion().valid_move((old_file, old_rank), dest_sq):
@@ -60,3 +60,15 @@ class GameMaster:
         new_file, new_rank = new_sq
         self.chessboard.square(new_file, new_rank).piece = piece
         self.chessboard.square(old_file, old_rank).piece = None
+
+    def set_turn(self, color):
+        self.chessboard.turn = color
+
+    def switch_turn(self):
+        current_turn = self.chessboard.turn
+        if current_turn == Piece.WHITE:
+            self.set_turn(Piece.BLACK)
+            return Piece.BLACK
+        else:
+            self.set_turn(Piece.WHITE)
+            return Piece.WHITE
