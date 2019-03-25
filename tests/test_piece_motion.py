@@ -59,6 +59,10 @@ class RookMotionTestCase(unittest.TestCase):
         can_move_to_square = RookMotion.valid_move('a1', 'h8')
         self.assertFalse(can_move_to_square)
 
+    def test_valid_move__black_turn(self):
+        # can_move_to_square = RookMotion.valid_move('a1', 
+        pass
+
 class BishopMotionTestCase(unittest.TestCase):
     def test_valid_move(self):
         can_move_to_square = BishopMotion.valid_move('a1', 'h8')
