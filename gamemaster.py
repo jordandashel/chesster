@@ -19,8 +19,8 @@ class GameMaster:
     def set_board(self):
         self.chessboard.set_board()
 
-    def print_board(self):
-        print(self.chessboard)
+    def print_board(self, perspective):
+        print(self.chessboard.board_ascii(perspective))
  
     def piece_at_square(self, square):
         file_, rank = GameMaster.parse_input(square)

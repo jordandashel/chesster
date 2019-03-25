@@ -18,7 +18,6 @@ BOARD_RANKS = [i for i in range(1, 9)]
 
 class Chessboard:
 
-    turn = Piece.WHITE
     board = {}
 
     def __init__(self):
@@ -33,7 +32,7 @@ class Chessboard:
                 last_square_white = not last_square_white
             last_square_white = not last_square_white
 
-    def __str__(self):
+    def board_ascii(self, perspective):
         # Basic building blocks of ASCII output
         EMPTY_SQUARE = '   '
         VERT_BARRIER = '|'
@@ -46,7 +45,7 @@ class Chessboard:
         board += HORIZ_BORDER
 
         # to display white at the bottom
-        if self.turn == Piece.WHITE:
+        if perspective == Piece.WHITE:
             ranks = BOARD_RANKS.__reversed__()
         else:
             ranks = BOARD_RANKS
