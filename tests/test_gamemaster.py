@@ -59,5 +59,15 @@ class GameMasterTestCase(unittest.TestCase):
         result = GameMaster.parse_input('d2')
         self.assertEqual(result, ('d', 2))
 
+    def test_capture_list(self):
+        gm = GameMaster()
+        gm.set_board()
+        # NOTE: at time of test authorship, pieces are not yet restricted by
+        # intervening pieces. Thus, white queen can just hop over the pawns
+        # in the way. Following TDD, this test will need updating when that
+        # functionality is implemented.
+        gm.move_piece("qd8", Piece.WHITE)
+        self.assertEqual(len(gm.white_captures), 1)
+        self.assertEqual(gm.white_captures[0], 'bQ')
 
 
